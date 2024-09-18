@@ -1,5 +1,8 @@
 using NamozVaqtlari.Data;
+using NamozVaqtlari.Model.Users;
 using NamozVaqtlari.Profilies;
+using NamozVaqtlari.Repositoreis;
+using NamozVaqtlari.Services.AuthService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +14,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>();
 builder.Services.AddAutoMapper(typeof(UserProfile));
+
+builder.Services.AddScoped<IGenericRepository<User> , GenericRepository<User>>();
+builder.Services.AddScoped<IUserAuthService  ,  UserAuthService>();
 
 var app = builder.Build();
 
