@@ -19,10 +19,7 @@ namespace NamozVaqtlari.Controllers.Auth
         public IActionResult UserSignUp(UserSignUpRequestDTO userSignUpDto)
         {
             User user = _mapper.Map<User>(userSignUpDto);
-
-
-
-
+            user.Id = new Guid();
             return Ok(_mapper.Map<UserSignUpResponseDTO>(user));
         }
 
