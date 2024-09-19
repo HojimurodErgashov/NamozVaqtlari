@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using NamozVaqtlari.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace NamozVaqtlari.Model.Users
 {
@@ -8,14 +9,21 @@ namespace NamozVaqtlari.Model.Users
         public Guid Id { get; set; }
         [EmailAddress]
         public string? Email { get; set; }
-        [Length(9 , 9) , Required]
+        [UzbekistanPhoneNumber , Required]
         public string? PhoneNumber { get; set; }
-        [Length (10 , 10) , Required]
+
+        [Required , PasswordValidation]
         public string? Password { get; set; }
+
         public bool IsActived { get; set; } = false;
+
         [Length(4 , 4)]
         public int SmsCode { get; set; }
+
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+
         public string? Token { get; set; }
+
         public List<UserRole>? Role { get; set; } = new List<UserRole>() { UserRole.User};
     }
 }

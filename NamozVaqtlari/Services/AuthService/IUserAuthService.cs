@@ -6,6 +6,6 @@ namespace NamozVaqtlari.Services.AuthService
 {
     public interface IUserAuthService
     {
-        Task SignUpAsync(User user);
+        Task<User> SignUpAsync(User user);
     }
 }

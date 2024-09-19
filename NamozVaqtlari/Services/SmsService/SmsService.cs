@@ -5,7 +5,7 @@
         public int GenerateSmsCode()
         {
             Random rnd = new Random();
-            int randomNumberInRange = random.Next(1000, 10000); 
+            int randomNumberInRange = rnd.Next(1000, 10000); 
             return randomNumberInRange;
         }
 

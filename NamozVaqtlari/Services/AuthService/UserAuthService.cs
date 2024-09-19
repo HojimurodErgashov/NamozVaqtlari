@@ -12,14 +12,12 @@ namespace NamozVaqtlari.Services.AuthService
             _repository = repository;
         }
 
-        public async Task SignUpAsync(User? user)
+        public async Task<User> SignUpAsync(User? user)   
         {
             if (user == null && null != (await _repository.GetAll().FirstOrDefaultAsync(u => u.PhoneNumber == user.PhoneNumber))) { 
-                throw new ArgumentNullException(nameof(user));
+                throw new ArgumentNullException("Bu tefeon raqamli foydalanuvchi mavjud " + nameof(user));
             }
-
-            user = await _repository.AddAsync(user);
-            await _repository.SaveAsync();
+            return await _repository.AddAsync(user);
         }
     }
 }
