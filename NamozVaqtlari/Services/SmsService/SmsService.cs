@@ -4,7 +4,9 @@
     {
         public int GenerateSmsCode()
         {
-            throw new NotImplementedException();
+            Random rnd = new Random();
+            int randomNumberInRange = random.Next(1000, 10000); 
+            return randomNumberInRange;
         }
 
         public void SendSmsToPhoneNumber(string phoneNumber)

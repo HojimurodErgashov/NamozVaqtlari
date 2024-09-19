@@ -3,6 +3,7 @@ using NamozVaqtlari.Model.Users;
 using NamozVaqtlari.Profilies;
 using NamozVaqtlari.Repositoreis;
 using NamozVaqtlari.Services.AuthService;
+using NamozVaqtlari.Services.SmsService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,7 @@ builder.Services.AddAutoMapper(typeof(UserProfile));
 
 builder.Services.AddScoped<IGenericRepository<User> , GenericRepository<User>>();
 builder.Services.AddScoped<IUserAuthService  ,  UserAuthService>();
+builder.Services.AddScoped<ISmsService, SmsService>();
 
 var app = builder.Build();
 
