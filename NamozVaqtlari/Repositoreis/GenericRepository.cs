@@ -16,7 +16,14 @@ namespace NamozVaqtlari.Repositoreis
         {
             var entry = await _context.Set<TEntity>().AddAsync(entity);
 
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex) 
+            {
+                throw new ArgumentException("Exception " + ex);
+            }
 
             return entry.Entity;
         }
