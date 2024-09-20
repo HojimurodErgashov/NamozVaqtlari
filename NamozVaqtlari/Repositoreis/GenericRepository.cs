@@ -19,6 +19,7 @@ namespace NamozVaqtlari.Repositoreis
 
             await _context.SaveChangesAsync();
 
+
         }
 
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> expression)
