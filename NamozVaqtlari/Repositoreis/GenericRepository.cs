@@ -16,17 +16,8 @@ namespace NamozVaqtlari.Repositoreis
         public async ValueTask<TEntity> AddAsync(TEntity entity)
         {
             var entry = await _context.Set<TEntity>().AddAsync(entity);
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception ex) 
-            {
-                throw new ArgumentException("Exception " + ex);
-            }
-
-
+            await _context.SaveChangesAsync();
+            return entry.Entity;
         }
 
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> expression)
