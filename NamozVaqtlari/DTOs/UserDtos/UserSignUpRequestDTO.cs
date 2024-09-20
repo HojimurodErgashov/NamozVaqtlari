@@ -1,4 +1,5 @@
 ﻿using NamozVaqtlari.Model.Users;
+using NamozVaqtlari.Validation;
 using System.ComponentModel.DataAnnotations;
 
 namespace NamozVaqtlari.DTOs.UserDtos
@@ -6,9 +7,10 @@ namespace NamozVaqtlari.DTOs.UserDtos
     public class UserSignUpRequestDTO
     {
 
-        [Length(9, 9), Required]
+        [Required, UzbekistanPhoneNumber(ErrorMessage = "Telefon raqami noto'g'ri.")]
         public string? PhoneNumber { get; set; }
-        [Length(10, 10), Required]
+
+        [Required , PasswordValidation(ErrorMessage = "Password noto'g'ri.")]
         public string? Password { get; set; }
     }
 }
