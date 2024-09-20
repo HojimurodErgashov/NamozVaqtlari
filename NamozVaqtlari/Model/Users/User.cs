@@ -20,7 +20,7 @@ namespace NamozVaqtlari.Model.Users
         [Length(4 , 4)]
         public int SmsCode { get; set; }
 
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public string? Token { get; set; }
 
