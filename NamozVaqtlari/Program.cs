@@ -17,7 +17,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<AppDbContext>();
+builder.Services.AddDbContext<AppDbContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("NamozVaqtlariDatabase")));
 builder.Services.AddAutoMapper(typeof(UserProfile));
 
 builder.Services.AddScoped<IGenericRepository<User> , GenericRepository<User>>();
