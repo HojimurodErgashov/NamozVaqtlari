@@ -5,17 +5,9 @@ namespace NamozVaqtlari.Data
 {
     public class AppDbContext:DbContext
     {
-        protected readonly IConfiguration Configuration;
 
-        public AppDbContext(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseNpgsql(Configuration.GetConnectionString("NamozVaqtlariDatabase"));
-        }
+        public AppDbContext(DbContextOptions<AppDbContext> options):base(options)
+        {}
 
         public DbSet<User> Users { get; set; }
     }

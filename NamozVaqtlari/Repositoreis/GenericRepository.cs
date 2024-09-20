@@ -1,4 +1,5 @@
-﻿using NamozVaqtlari.Data;
+﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+using NamozVaqtlari.Data;
 using System.Linq.Expressions;
 
 namespace NamozVaqtlari.Repositoreis
@@ -9,7 +10,7 @@ namespace NamozVaqtlari.Repositoreis
 
         public GenericRepository(AppDbContext context)
         {
-            _context = context;
+            _context = context; 
         }
 
         public async ValueTask<TEntity> AddAsync(TEntity entity)
@@ -18,7 +19,6 @@ namespace NamozVaqtlari.Repositoreis
 
             await _context.SaveChangesAsync();
 
-            return entry.Entity;
         }
 
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> expression)

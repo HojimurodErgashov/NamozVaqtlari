@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using NamozVaqtlari.Data;
 using NamozVaqtlari.Model.Users;
 using NamozVaqtlari.Profilies;
@@ -5,7 +6,9 @@ using NamozVaqtlari.Repositoreis;
 using NamozVaqtlari.Services.AuthService;
 using NamozVaqtlari.Services.SmsService;
 
+
 var builder = WebApplication.CreateBuilder(args);
+var Configuration = builder.Configuration;
 
 // Add services to the container.
 
@@ -13,6 +16,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 builder.Services.AddDbContext<AppDbContext>();
 builder.Services.AddAutoMapper(typeof(UserProfile));
 
