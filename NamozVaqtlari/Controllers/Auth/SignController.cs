@@ -21,8 +21,8 @@ namespace NamozVaqtlari.Controllers.Auth
             _smsService = smsService;
         }
 
-        [HttpPost("SignUp")]
-        public IActionResult UserSignUp(UserSignUpRequestDTO userSignUpDto)
+        [HttpPost("salom")]
+        public async Task<IActionResult>  UserSignUp(UserSignUpRequestDTO userSignUpDto)
         {
             if (!ModelState.IsValid) 
             {
@@ -49,8 +49,7 @@ namespace NamozVaqtlari.Controllers.Auth
             User user = _mapper.Map<User>(userSignUpDto);
             user.Id = new Guid();
             user.SmsCode = _smsService.GenerateSmsCode();
-            user.CreatedAt = DateTime.Now;
-            _userAuthService.SignUpAsync(user);
+            await _userAuthService.SignUpAsync(user);
             return Ok(_mapper.Map<UserSignUpResponseDTO>(user));
         }
 

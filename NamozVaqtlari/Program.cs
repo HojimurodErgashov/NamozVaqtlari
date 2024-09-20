@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using NamozVaqtlari.Data;
 using NamozVaqtlari.Model.Users;
 using NamozVaqtlari.Profilies;
@@ -5,7 +6,9 @@ using NamozVaqtlari.Repositoreis;
 using NamozVaqtlari.Services.AuthService;
 using NamozVaqtlari.Services.SmsService;
 
+
 var builder = WebApplication.CreateBuilder(args);
+var Configuration = builder.Configuration;
 
 // Add services to the container.
 
